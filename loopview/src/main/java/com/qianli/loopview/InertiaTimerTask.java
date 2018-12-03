@@ -1,4 +1,4 @@
-package com.weigan.loopview;
+package com.qianli.loopview;
 
 final class InertiaTimerTask implements Runnable {
 

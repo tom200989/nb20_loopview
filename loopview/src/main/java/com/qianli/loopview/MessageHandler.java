@@ -1,4 +1,4 @@
-package com.weigan.loopview;
+package com.qianli.loopview;
 
 import android.os.Handler;
 import android.os.Message;

@@ -1,4 +1,4 @@
-package com.weigan.loopview;
+package com.qianli.loopview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

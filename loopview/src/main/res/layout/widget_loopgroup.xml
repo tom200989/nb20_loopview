@@ -13,25 +13,25 @@
         android:background="@android:color/white"
         android:orientation="horizontal">
 
-        <com.weigan.loopview.LoopView
+        <com.qianli.loopview.LoopView
             android:id="@+id/loop_part1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <com.weigan.loopview.LoopView
+        <com.qianli.loopview.LoopView
             android:id="@+id/loop_part2"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <com.weigan.loopview.LoopView
+        <com.qianli.loopview.LoopView
             android:id="@+id/loop_part3"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <com.weigan.loopview.LoopView
+        <com.qianli.loopview.LoopView
             android:id="@+id/loop_part4"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

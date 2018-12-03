@@ -2,7 +2,7 @@
 // Jad home page: http://www.geocities.com/kpdus/jad.html
 // Decompiler options: braces fieldsfirst space lnc 
 
-package com.weigan.loopview;
+package com.qianli.loopview;
 
 final class SmoothScrollTimerTask implements Runnable {
 

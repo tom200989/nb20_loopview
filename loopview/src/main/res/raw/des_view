@@ -40,6 +40,8 @@
     setScrollSpeed(int)                     :   设置滚动速度, 默认为: 10
     setTextSize(float,boolean)              :   设置文本大小, 默认为:15, 建议值为: 18; boolean: T加粗, F不加粗
     setFling(false)                         :   强制设置不滚动
+    setListener(int, OnLoopSelecteListener) :   设置监听, 参数1为指定位标的控件, 参数2为监听器回调
+    OnLoopSelecteListener: onLoopSelected(int index, String content) :  回调参数为index: 位标, content: 对应的内容
 
 <PART 3: 实例>
     for (int i = 0; i < 15; i++) {
@@ -57,12 +59,12 @@
     loopView.setScrollSpeeds(10);// 滚动速率
     loopView.setTextSize(18, true);// 字体大小、加粗(默认15)
     loopView.setFling(false);// 强制设置不滚动
-    
-    //滚动监听
-    loopView.setListener(new OnItemSelectedListener() {
+    // 选中回调
+    lgs.setListener(0, new OnLoopSelecteListener() {
         @Override
-        public void onItemSelected(int index) {
-            Toast.makeText(MainActivity.this, "select: item position == " + index, Toast.LENGTH_SHORT).show();
+        public void onLoopSelected(int index, String content) {
+            // @index: 位标
+            // @content: 对应的内容
         }
     });
 

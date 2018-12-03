@@ -1,4 +1,4 @@
-package com.weigan.loopgroup;
+package com.qianli.loopgroup;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -10,9 +10,10 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import com.weigan.loopview.LoopView;
-import com.weigan.loopview.OnItemSelectedListener;
-import com.weigan.loopview.R;
+import com.qianli.listener.OnLoopSelecteListener;
+import com.qianli.loopview.LoopView;
+import com.qianli.loopview.OnItemSelectedListener;
+import com.qianli.loopview.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,7 @@ public class LoopGroup extends RelativeLayout {
     private LoopView loopPart3;
     private LoopView loopPart4;
     private List<LoopView> loops = new ArrayList<>();
+    private List<List<String>> loopDataList = new ArrayList<>();
 
     public LoopGroup(Context context) {
         this(context, null, 0);
@@ -86,6 +88,12 @@ public class LoopGroup extends RelativeLayout {
                          @Nullable List<String> data3,// 数据3, 可为null
                          @Nullable List<String> data4// 数据4, 可为null
     ) {
+
+        loopDataList.add(data1);
+        loopDataList.add(data2);
+        loopDataList.add(data3);
+        loopDataList.add(data4);
+
         loopPart1.setItems(data1);
 
         if (data2 != null) {
@@ -153,11 +161,18 @@ public class LoopGroup extends RelativeLayout {
      * 设置item选中监听器
      * TOAT:扩展
      *
-     * @param index                  需要监听的索引
-     * @param onItemSelectedListener 由外部传入接收器listener
+     * @param index                 需要监听的索引
+     * @param onLoopSelecteListener 由外部传入接收器listener
      */
-    public void setListener(@IntRange(from = 0, to = 3) int index, OnItemSelectedListener onItemSelectedListener) {
-        loops.get(index).setListener(onItemSelectedListener);
+    public void setListener(@IntRange(from = 0, to = 3) final int index, final OnLoopSelecteListener onLoopSelecteListener) {
+        loops.get(index).setListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(int choice) {
+                List<String> datas = loopDataList.get(index);
+                String content = datas.get(choice);
+                onLoopSelecteListener.onLoopSelected(choice, content);
+            }
+        });
     }
 
     /* -------------------------------------------- 通用方法 -------------------------------------------- */

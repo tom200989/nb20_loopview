@@ -1,4 +1,4 @@
-package com.weigan.loopview;
+package com.qianli.loopview;
 
 final class OnItemSelectedRunnable implements Runnable {
     private final LoopView loopView;
