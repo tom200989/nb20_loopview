@@ -1,0 +1,68 @@
+<PART 1: 参数关系>
+    1.字体设置为18, 即setTextSize()固定参数为: 18
+    2.然后通过改变行距来调整字体居中的问题(现问题是需要一个很合理的行距来调整文字居中)
+    即 setLineSpacingMultiplier(x), 通过实践得到setTextSize() 与 setLineSpacingMultiplier(x)规律: 
+    
+    像素密度 == [2]
+    ------------------------------------------------
+    setTextSize     -       setLineSpacingMultiplier
+    
+        10          -               3.05f
+        15          -               3.05f
+        20          -               3.00f
+        25          -               3.00f
+        30          -               2.80f
+    ------------------------------------------------
+    
+    像素密度 == [3]
+    ------------------------------------------------
+    setTextSize     -       setLineSpacingMultiplier
+    
+        10          -               3.00f
+        15          -               2.85f
+        20          -               2.84f
+        25          -               2.80f
+        30          -               2.80f
+    ------------------------------------------------
+
+<PART 2: method>
+    setCenterTextColor(int)                 :   设置选中文本颜色, Color.parse("#009688")
+    setCurrentPosition(int)                 :   设置当前显示的item位标, 0
+    setDividerColor(int)                    :   设置分割线颜色, Color.parse("#009688")
+    setInitPosition(int)                    :   设置初始显示的item位标, 5
+    setItems(List<String>)                  :   设置数据集合, List<String> strings
+    setItemsVisibleCount(int)               :   设置可见Item的数量, 默认: 9
+    setLineSpacingMultiplier(float)         :   设置行距, 默认: 2.0f, 建议值参考raw的des文件
+    setListener(OnItemSelectedListener)     :   设置选中监听器
+    setNotLoop()                            :   设置不循还滚动
+    setOuterTextColor(int)                  :   设置非选中文本颜色, Color.parse("#009688")
+    setScaleX(float)                        :   设置文本横向缩放倍率, 默认为: 1.0f
+    setScrollSpeed(int)                     :   设置滚动速度, 默认为: 10
+    setTextSize(float,boolean)              :   设置文本大小, 默认为:15, 建议值为: 18; boolean: T加粗, F不加粗
+    setFling(false)                         :   强制设置不滚动
+
+<PART 3: 实例>
+    for (int i = 0; i < 15; i++) {
+        list.add("item " + i);
+    }
+    loopView.setCenterTextColor(Color.parseColor("#7e7e7e"));// 选中文本颜色
+    loopView.setDividerColor(Color.parseColor("#b1b1b1"));// 上下分割线颜色
+    loopView.setInitPosition(0);// 初始位置(默认0)
+    loopView.setItems(list);// 数据集合
+    loopView.setItemsVisibleCount(9);// 最大可视item个数(默认9)
+    loopView.setLineSpacingMultiplier(2.8f);// 该值的设置, 详细见raw文件夹的des说明
+    loopView.setNotLoop();// 不循环
+    loopView.setOuterTextColor(Color.parseColor("#b1b1b1"));// 非选中字符颜色
+    loopView.setScaleX(1.0f);// 字符间距倍率(默认1.0f)
+    loopView.setScrollSpeeds(10);// 滚动速率
+    loopView.setTextSize(18, true);// 字体大小、加粗(默认15)
+    loopView.setFling(false);// 强制设置不滚动
+    
+    //滚动监听
+    loopView.setListener(new OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(int index) {
+            Toast.makeText(MainActivity.this, "select: item position == " + index, Toast.LENGTH_SHORT).show();
+        }
+    });
+
