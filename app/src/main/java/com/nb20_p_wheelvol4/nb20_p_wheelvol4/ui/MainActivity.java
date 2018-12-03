@@ -21,7 +21,48 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // session1();
-        session2();
+        // session2();
+        session3();
+    }
+
+    private void session3() {
+        // 获取数据
+        List<String> years = getYearNum();
+        List<String> yearsText = getYearText();
+        // 设置参数监听器等
+        lgs = findViewById(R.id.lgs);
+        lgs.setCenterColor("#434343");
+        lgs.setDividerColor("#cccccc");
+        lgs.setOuterTextColor("#cccccc");
+        lgs.setInitPosition(0, 0, 0, 0);
+        lgs.setDatas(years, yearsText, null, null);
+        lgs.setItemsVisibleCount(9);
+        lgs.setLineSpace(2.8f);
+        lgs.setNotLoop();
+        lgs.setTextScaleX(1.0f);
+        lgs.setScrollSpeeds(10);
+        lgs.setTextSize(18, true);
+        lgs.setNotFling(1);
+        lgs.setListener(0, new OnLoopSelecteListener() {
+            @Override
+            public void onLoopSelected(int index, String content) {
+                toastInfo(0, index, content);
+            }
+        });
+    }
+
+    private List<String> getYearText() {
+        List<String> yearTexts = new ArrayList<>();
+        yearTexts.add("year");
+        return yearTexts;
+    }
+
+    private List<String> getYearNum() {
+        List<String> years = new ArrayList<>();
+        for (int i = 1; i <= 100; i++) {
+            years.add(String.valueOf(i));
+        }
+        return years;
     }
 
     private void session2() {
